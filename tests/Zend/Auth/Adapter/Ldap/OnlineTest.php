@@ -20,7 +20,7 @@
  * @version    $Id$
  */
 
-s
+
 /**
  * @category   Zend
  * @package    Zend_Auth
