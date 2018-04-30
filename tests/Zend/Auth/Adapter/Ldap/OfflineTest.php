@@ -72,7 +72,7 @@ class Zend_Auth_Adapter_Ldap_OfflineTest extends PHPUnit\Framework\TestCase
     public function testSetAndGetUsername()
     {
         $usernameExpected = 'someUsername';
-        $usernameActual = $this->_adapter->setUsername($usernameExpected)
+        $usernameActual   = $this->_adapter->setUsername($usernameExpected)
                                          ->getUsername();
         $this->assertSame($usernameExpected, $usernameActual);
     }
@@ -80,7 +80,7 @@ class Zend_Auth_Adapter_Ldap_OfflineTest extends PHPUnit\Framework\TestCase
     public function testSetAndGetPassword()
     {
         $passwordExpected = 'somePassword';
-        $passwordActual = $this->_adapter->setPassword($passwordExpected)
+        $passwordActual   = $this->_adapter->setPassword($passwordExpected)
                                          ->getPassword();
         $this->assertSame($passwordExpected, $passwordActual);
     }
@@ -88,7 +88,7 @@ class Zend_Auth_Adapter_Ldap_OfflineTest extends PHPUnit\Framework\TestCase
     public function testSetIdentityProxiesToSetUsername()
     {
         $usernameExpected = 'someUsername';
-        $usernameActual = $this->_adapter->setIdentity($usernameExpected)
+        $usernameActual   = $this->_adapter->setIdentity($usernameExpected)
                                          ->getUsername();
         $this->assertSame($usernameExpected, $usernameActual);
     }
@@ -96,7 +96,7 @@ class Zend_Auth_Adapter_Ldap_OfflineTest extends PHPUnit\Framework\TestCase
     public function testSetCredentialProxiesToSetPassword()
     {
         $passwordExpected = 'somePassword';
-        $passwordActual = $this->_adapter->setCredential($passwordExpected)
+        $passwordActual   = $this->_adapter->setCredential($passwordExpected)
                                          ->getPassword();
         $this->assertSame($passwordExpected, $passwordActual);
     }

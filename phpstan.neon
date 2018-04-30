@@ -1,4 +1,7 @@
 parameters:
+    excludes_analyse:
+        - %rootDir%/../../../vendor/*
+        - %rootDir%/../../../tests/*
     ignoreErrors:
         - '#Casting to string something that.s already string\.#'
         - '#Argument of an invalid type array\|null supplied for foreach, only iterables are supported\.#'

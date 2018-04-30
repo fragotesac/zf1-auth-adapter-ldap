@@ -52,25 +52,32 @@ class Zend_Auth_Adapter_Ldap_OnlineTest extends PHPUnit\Framework\TestCase
         }
 
         $this->_options = array(
-            'host' => TESTS_ZEND_LDAP_HOST,
+            'host'     => TESTS_ZEND_LDAP_HOST,
             'username' => TESTS_ZEND_LDAP_USERNAME,
             'password' => TESTS_ZEND_LDAP_PASSWORD,
-            'baseDn' => TESTS_ZEND_LDAP_BASE_DN,
+            'baseDn'   => TESTS_ZEND_LDAP_BASE_DN,
         );
-        if (defined('TESTS_ZEND_LDAP_PORT'))
+        if (defined('TESTS_ZEND_LDAP_PORT')) {
             $this->_options['port'] = TESTS_ZEND_LDAP_PORT;
-        if (defined('TESTS_ZEND_LDAP_USE_START_TLS'))
+        }
+        if (defined('TESTS_ZEND_LDAP_USE_START_TLS')) {
             $this->_options['useStartTls'] = TESTS_ZEND_LDAP_USE_START_TLS;
-        if (defined('TESTS_ZEND_LDAP_USE_SSL'))
+        }
+        if (defined('TESTS_ZEND_LDAP_USE_SSL')) {
             $this->_options['useSsl'] = TESTS_ZEND_LDAP_USE_SSL;
-        if (defined('TESTS_ZEND_LDAP_BIND_REQUIRES_DN'))
+        }
+        if (defined('TESTS_ZEND_LDAP_BIND_REQUIRES_DN')) {
             $this->_options['bindRequiresDn'] = TESTS_ZEND_LDAP_BIND_REQUIRES_DN;
-        if (defined('TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT'))
+        }
+        if (defined('TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT')) {
             $this->_options['accountFilterFormat'] = TESTS_ZEND_LDAP_ACCOUNT_FILTER_FORMAT;
-        if (defined('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME'))
+        }
+        if (defined('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME')) {
             $this->_options['accountDomainName'] = TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME;
-        if (defined('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT'))
+        }
+        if (defined('TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT')) {
             $this->_options['accountDomainNameShort'] = TESTS_ZEND_LDAP_ACCOUNT_DOMAIN_NAME_SHORT;
+        }
 
         if (defined('TESTS_ZEND_LDAP_ALT_USERNAME')) {
             $this->_names[Zend_Ldap::ACCTNAME_FORM_USERNAME] = TESTS_ZEND_LDAP_ALT_USERNAME;
@@ -109,9 +116,9 @@ class Zend_Auth_Adapter_Ldap_OnlineTest extends PHPUnit\Framework\TestCase
          * EXAMPLE\uname). A total of 9 authentications are performed.
          */
         foreach ($this->_names as $form => $formName) {
-            $options = $this->_options;
+            $options                         = $this->_options;
             $options['accountCanonicalForm'] = $form;
-            $adapter = new Zend_Auth_Adapter_Ldap(array($options));
+            $adapter                         = new Zend_Auth_Adapter_Ldap(array($options));
             $adapter->setPassword(TESTS_ZEND_LDAP_ALT_PASSWORD);
             foreach ($this->_names as $username) {
                 $adapter->setUsername($username);
@@ -179,7 +186,7 @@ class Zend_Auth_Adapter_Ldap_OnlineTest extends PHPUnit\Framework\TestCase
             TESTS_ZEND_LDAP_ALT_PASSWORD
         );
 
-        $result = $adapter->authenticate();
+        $result  = $adapter->authenticate();
         $account = $adapter->getAccountObject();
 
         $this->assertTrue($result->isValid());
@@ -195,7 +202,7 @@ class Zend_Auth_Adapter_Ldap_OnlineTest extends PHPUnit\Framework\TestCase
             TESTS_ZEND_LDAP_ALT_PASSWORD
         );
 
-        $result = $adapter->authenticate();
+        $result  = $adapter->authenticate();
         $account = $adapter->getAccountObject(array(), array('userPassword'));
 
         $this->assertTrue($account instanceof stdClass);
