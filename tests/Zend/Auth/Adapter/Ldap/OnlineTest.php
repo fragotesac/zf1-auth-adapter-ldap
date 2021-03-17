@@ -43,7 +43,7 @@ class Zend_Auth_Adapter_Ldap_OnlineTest extends PHPUnit\Framework\TestCase
      */
     protected $_names = array();
 
-    public function setUp()
+    public function setUp(): void
     {
         if (!(defined('TESTS_ZEND_AUTH_ADAPTER_LDAP_ONLINE_ENABLED')
             && constant('TESTS_ZEND_AUTH_ADAPTER_LDAP_ONLINE_ENABLED'))) {
