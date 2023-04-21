@@ -102,7 +102,7 @@ class Zend_Auth_Adapter_Ldap_OnlineTest extends PHPUnit\Framework\TestCase
 
         $result = $adapter->authenticate();
 
-        $this->assertTrue($result instanceof Zend_Auth_Result);
+        $this->assertInstanceOf(Zend_Auth_Result::class, $result);
         $this->assertTrue($result->isValid());
         $this->assertTrue($result->getCode() == Zend_Auth_Result::SUCCESS);
     }
@@ -123,7 +123,7 @@ class Zend_Auth_Adapter_Ldap_OnlineTest extends PHPUnit\Framework\TestCase
             foreach ($this->_names as $username) {
                 $adapter->setUsername($username);
                 $result = $adapter->authenticate();
-                $this->assertTrue($result instanceof Zend_Auth_Result);
+                $this->assertInstanceOf(Zend_Auth_Result::class, $result);
                 $this->assertTrue($result->isValid());
                 $this->assertTrue($result->getCode() == Zend_Auth_Result::SUCCESS);
                 $this->assertTrue($result->getIdentity() === $formName);
@@ -140,7 +140,7 @@ class Zend_Auth_Adapter_Ldap_OnlineTest extends PHPUnit\Framework\TestCase
         );
 
         $result = $adapter->authenticate();
-        $this->assertTrue($result instanceof Zend_Auth_Result);
+        $this->assertInstanceOf(Zend_Auth_Result::class, $result);
         $this->assertTrue($result->isValid() === false);
         $this->assertTrue($result->getCode() == Zend_Auth_Result::FAILURE_CREDENTIAL_INVALID);
     }
@@ -154,7 +154,7 @@ class Zend_Auth_Adapter_Ldap_OnlineTest extends PHPUnit\Framework\TestCase
         );
 
         $result = $adapter->authenticate();
-        $this->assertTrue($result instanceof Zend_Auth_Result);
+        $this->assertInstanceOf(Zend_Auth_Result::class, $result);
         $this->assertTrue($result->isValid() === false);
         $this->assertTrue(
             $result->getCode() == Zend_Auth_Result::FAILURE_IDENTITY_NOT_FOUND ||
@@ -171,7 +171,7 @@ class Zend_Auth_Adapter_Ldap_OnlineTest extends PHPUnit\Framework\TestCase
         );
 
         $result = $adapter->authenticate();
-        $this->assertTrue($result instanceof Zend_Auth_Result);
+        $this->assertInstanceOf(Zend_Auth_Result::class, $result);
         $this->assertFalse($result->isValid());
         $this->assertThat($result->getCode(), $this->lessThanOrEqual(Zend_Auth_Result::FAILURE));
         $messages = $result->getMessages();
@@ -190,7 +190,7 @@ class Zend_Auth_Adapter_Ldap_OnlineTest extends PHPUnit\Framework\TestCase
         $account = $adapter->getAccountObject();
 
         $this->assertTrue($result->isValid());
-        $this->assertTrue($account instanceof stdClass);
+        $this->assertInstanceOf(stdClass::class, $account);
         $this->assertEquals(TESTS_ZEND_LDAP_ALT_DN, $account->dn);
     }
 
@@ -205,7 +205,7 @@ class Zend_Auth_Adapter_Ldap_OnlineTest extends PHPUnit\Framework\TestCase
         $result  = $adapter->authenticate();
         $account = $adapter->getAccountObject(array(), array('userPassword'));
 
-        $this->assertTrue($account instanceof stdClass);
+        $this->assertInstanceOf(stdClass::class, $account);
         $this->assertFalse(isset($account->userpassword));
     }
 }
