@@ -1,5 +1,5 @@
 {
-    "name": "diablomedia/zendframework1-auth-adapter-ldap",
+    "name": "fragotesac/zf1-auth-adapter-ldap",
     "description": "Zend Framework 1 Auth_Adapter_Ldap component",
     "type": "library",
     "keywords": [
